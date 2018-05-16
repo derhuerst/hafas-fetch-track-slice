@@ -20,6 +20,7 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"@turf/line-slice": "^5.1.5"
 	},
 	"devDependencies": {
 		"tap-min": "^1.2.2",
