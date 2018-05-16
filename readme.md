@@ -19,7 +19,55 @@ npm install hafas-fetch-track-slice
 ## Usage
 
 ```js
-// todo
+const hafas = require('vbb-hafas')
+const fetchTrackSlice = require('hafas-fetch-track-slice')
+
+const prevStation = {
+	type: 'station',
+	id: '900000016202'
+	name: 'U Südstern',
+	location: {
+		type: 'location',
+		latitude: 52.491252,
+		longitude: 13.395382
+	}
+}
+const nextStation = {
+	type: 'station',
+	id: '900000016153'
+	name: 'U Gneisenaustr',
+	location: {
+		type: 'location',
+		latitude: 52.490386,
+		longitude: 13.400214
+	}
+}
+
+// get these from e.g. hafas.journeys(), hafas.departures() or hafas.radar()
+const someJourneyId = '1|31817|10|86|16052018'
+
+fetchTrackSlice(hafas, prevStation, nextStation, journeyId, 'U7')
+.then(console.log)
+.catch((err) => {
+	console.error(err)
+	process.exitCode = 1
+})
+```
+
+```js
+{
+	type: 'LineString',
+	coordinates: [
+		[
+			13.407732293830614,
+			52.4892844953395
+		],
+		[
+			13.407732293830614,
+			52.4892844953395
+		]
+	]
+}
 ```
 
 
