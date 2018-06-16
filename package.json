@@ -1,7 +1,7 @@
 {
 	"name": "hafas-fetch-track-slice",
 	"description": "Pass in a journey (leg) ID, get a slice between stations of its track.",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"main": "index.js",
 	"files": [
 		"index.js"
@@ -21,6 +21,9 @@
 	},
 	"dependencies": {
 		"@turf/line-slice": "^5.1.5"
+	},
+	"peerDependencies": {
+		"hafas-client": "^3.0.0-alpha.3"
 	},
 	"devDependencies": {
 		"tap-min": "^1.2.2",
