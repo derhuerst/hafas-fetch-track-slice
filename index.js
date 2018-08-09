@@ -18,24 +18,28 @@ const assertValidStation = (s, name) => {
 // To find the "track slice" the vehicle has travelled and will travel, we
 // - query the whole journey (leg), including the track shape
 // - compute the slice of the track between previous station and next station
-// - check if `point` is close to the track slice
-const fetchTrackSlice = (hafas, prevStation, nextStation, journeyId, lineName) => {
+const fetchTrackSlice = (hafas, prevStation, nextStation, tripId, lineName) => {
 	assertValidStation(prevStation, 'prevStation')
 	assertValidStation(nextStation, 'nextStation')
-	if (!nonEmptyStr(journeyId)) {
-		throw new Error('journeyId must be a non-empty string')
+	if (!nonEmptyStr(tripId)) {
+		throw new Error('tripId must be a non-empty string')
 	}
 	if (!nonEmptyStr(lineName)) {
 		throw new Error('lineName must be a non-empty string')
 	}
 
-	return hafas.journeyLeg(journeyId, lineName, {
+	return hafas.trip(tripId, lineName, {
 		polyline: true,
-		passedStations: true
+		stopovers: true,
+		remarks: false
 	})
 	.then((leg) => {
 		const findPassed = (id) => {
-			return leg.passed.some(s => s.station && s.station.id === id)
+			return leg.stopovers.some((p) => {
+				const s = p.stop || {}
+				if (!s) return false
+				return s.station && s.station.id === id || s.id === id
+			})
 		}
 		if (!findPassed(prevStation.id)) {
 			throw new Error(prevStation.id + ' is not among the passed stations')

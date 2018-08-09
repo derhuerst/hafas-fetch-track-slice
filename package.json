@@ -28,7 +28,7 @@
 	"devDependencies": {
 		"tap-min": "^1.2.2",
 		"tape": "^4.8.0",
-		"vbb-hafas": "^5.0.0-alpha.3"
+		"vbb-hafas": "^5.0.0-alpha.6"
 	},
 	"scripts": {
 		"test": "node test.js | tap-min",
