@@ -1,9 +1,11 @@
 'use strict'
 
 const test = require('tape')
-const hafas = require('vbb-hafas')
+const createHafas = require('vbb-hafas')
 
 const fetchTrackSlice = require('.')
+
+const hafas = createHafas('hafas-find-trips test')
 
 const findVehicle = (around) => {
 	return hafas.radar({

@@ -16,7 +16,7 @@ const assertValidStation = (s, name) => {
 }
 
 // To find the "track slice" the vehicle has travelled and will travel, we
-// - query the whole journey (leg), including the track shape
+// - query the whole trip, including the track shape
 // - compute the slice of the track between previous station and next station
 const fetchTrackSlice = (hafas, prevStation, nextStation, tripId, lineName) => {
 	assertValidStation(prevStation, 'prevStation')
@@ -33,9 +33,9 @@ const fetchTrackSlice = (hafas, prevStation, nextStation, tripId, lineName) => {
 		stopovers: true,
 		remarks: false
 	})
-	.then((leg) => {
+	.then((trip) => {
 		const findPassed = (id) => {
-			return leg.stopovers.some((p) => {
+			return trip.stopovers.some((p) => {
 				const s = p.stop || {}
 				if (!s) return false
 				return s.station && s.station.id === id || s.id === id
@@ -53,8 +53,8 @@ const fetchTrackSlice = (hafas, prevStation, nextStation, tripId, lineName) => {
 			properties: {},
 			geometry: {
 				type: 'LineString',
-				// todo: flatten leg.polyline to just `Point`s
-				coordinates: leg.polyline.features.map(f => f.geometry.coordinates)
+				// todo: flatten trip.polyline to just `Point`s
+				coordinates: trip.polyline.features.map(f => f.geometry.coordinates)
 			}
 		}
 

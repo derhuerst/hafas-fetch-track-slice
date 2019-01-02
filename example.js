@@ -25,7 +25,7 @@ hafas.radar({
 	const lineName = vehicle.line && vehicle.line.name
 	console.error('line', lineName, 'between', prev.name, 'and', next.name)
 
-	return fetchTrackSlice(hafas, prev, next, vehicle.journeyId, lineName)
+	return fetchTrackSlice(hafas, prev, next, vehicle.tripId, lineName)
 })
 .then(console.log)
 .catch((err) => {

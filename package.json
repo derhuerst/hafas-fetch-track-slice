@@ -23,12 +23,12 @@
 		"@turf/line-slice": "^5.1.5"
 	},
 	"peerDependencies": {
-		"hafas-client": "^3.0.0-alpha.3"
+		"hafas-client": "^3.3.0"
 	},
 	"devDependencies": {
 		"tap-min": "^1.2.2",
 		"tape": "^4.8.0",
-		"vbb-hafas": "^5.0.0-alpha.6"
+		"vbb-hafas": "^5.0.1"
 	},
 	"scripts": {
 		"test": "node test.js | tap-min",
