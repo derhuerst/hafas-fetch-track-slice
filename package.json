@@ -1,6 +1,6 @@
 {
 	"name": "hafas-fetch-track-slice",
-	"description": "Pass in a journey (leg) ID, get a slice between stations of its track.",
+	"description": "Pass in a HAFAS trip ID, get a slice between stations of its track.",
 	"version": "0.1.1",
 	"main": "index.js",
 	"files": [

@@ -34,7 +34,7 @@ test('works i guess', (t) => {
 		const next = frame && frame.destination
 		const lineName = vehicle.line && vehicle.line.name
 
-		return fetchTrackSlice(hafas, prev, next, vehicle.journeyId, lineName)
+		return fetchTrackSlice(hafas, prev, next, vehicle.tripId, lineName)
 	})
 	.then((slice) => {
 		t.ok(slice)

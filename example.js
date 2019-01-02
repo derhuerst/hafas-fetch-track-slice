@@ -1,11 +1,13 @@
 'use strict'
 
-const hafas = require('vbb-hafas')
+const createHafas = require('vbb-hafas')
 
 const fetchTrackSlice = require('.')
 
 const latitude = 52.496633
 const longitude = 13.390944
+
+const hafas = createHafas('hafas-fetch-track-slice example')
 
 hafas.radar({
 	north: latitude + .006,

@@ -1,6 +1,6 @@
 # hafas-fetch-track-slice
 
-**Pass in a [journey (leg) ID](https://github.com/public-transport/hafas-client/blob/48f2cefb5b2b65a5f84f5c499835c3315ab67322/docs/journey-leg.md), get a slice between stations of its track.**
+**Pass in a [trip ID](https://github.com/public-transport/hafas-client/blob/ecc26ef313b75f9bedcf4ee1b2b95aebb3478379/docs/trip.md), get a slice between stations of its track.**
 
 [![npm version](https://img.shields.io/npm/v/hafas-fetch-track-slice.svg)](https://www.npmjs.com/package/hafas-fetch-track-slice)
 [![build status](https://api.travis-ci.org/derhuerst/hafas-fetch-track-slice.svg?branch=master)](https://travis-ci.org/derhuerst/hafas-fetch-track-slice)
@@ -19,7 +19,7 @@ npm install hafas-fetch-track-slice
 ## Usage
 
 ```js
-const hafas = require('vbb-hafas')
+const createHafas = require('vbb-hafas')
 const fetchTrackSlice = require('hafas-fetch-track-slice')
 
 const prevStation = {
@@ -43,10 +43,11 @@ const nextStation = {
 	}
 }
 
+const hafas = createHafas('my-awesome-program')
 // get these from e.g. hafas.journeys(), hafas.departures() or hafas.radar()
-const someJourneyId = '1|31817|10|86|16052018'
+const someTripId = '1|31817|10|86|16052018'
 
-fetchTrackSlice(hafas, prevStation, nextStation, journeyId, 'U7')
+fetchTrackSlice(hafas, prevStation, nextStation, someTripId, 'U7')
 .then(console.log)
 .catch((err) => {
 	console.error(err)
