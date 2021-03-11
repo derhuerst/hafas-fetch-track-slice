@@ -17,19 +17,19 @@
 	"bugs": "https://github.com/derhuerst/hafas-fetch-track-slice/issues",
 	"license": "ISC",
 	"engines": {
-		"node": ">=6"
+		"node": ">=12"
 	},
 	"dependencies": {
-		"@turf/line-slice": "^5.1.5"
+		"@turf/line-slice": "^6.3.0"
 	},
 	"peerDependencies": {
-		"hafas-client": "^3.3.0"
+		"hafas-client": "^5.0.0"
 	},
 	"devDependencies": {
 		"eslint": "^7.21.0",
-		"tap-min": "^1.2.2",
-		"tape": "^4.8.0",
-		"vbb-hafas": "^5.0.1"
+		"tap-min": "^2.0.0",
+		"tape": "^5.2.2",
+		"vbb-hafas": "^7.0.3"
 	},
 	"scripts": {
 		"test": "node test.js | tap-min",

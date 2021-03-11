@@ -1,9 +1,8 @@
-sudo: false
 language: node_js
 node_js:
   - 'stable'
   - 'lts/*'
-  - '6'
+  - '12'
 script:
   - npm run lint
   - npm test
