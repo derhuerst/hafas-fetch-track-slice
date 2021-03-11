@@ -19,17 +19,26 @@ hafas.radar({
 	duration: 1,
 	frames: 2
 })
-.then(([vehicle]) => {
+.then(async ([vehicle]) => {
 	const frame = vehicle.frames && vehicle.frames[0] && vehicle.frames[0]
 	const prev = frame && frame.origin
 	const next = frame && frame.destination
-
 	const lineName = vehicle.line && vehicle.line.name
-	console.error('line', lineName, 'between', prev.name, 'and', next.name)
 
-	return fetchTrackSlice(hafas, prev, next, vehicle.tripId, lineName)
+	const slice = await fetchTrackSlice(hafas, prev, next, vehicle.tripId, lineName)
+	const feat = {
+		type: 'Feature',
+		properties: {
+			tripId: vehicle.tripId,
+			lineName,
+			prev, next,
+		},
+		geometry: slice,
+	}
+
+	console.error('paste this into geojson.io:')
+	process.stdout.write(JSON.stringify(feat) + '\n')
 })
-.then(console.log)
 .catch((err) => {
 	console.error(err)
 	process.exitCode = 1
